@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: it.fabrick.api.accountmanager.AccountmanagerApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.262 s - in it.fabrick.api.accountmanager.AccountmanagerApplicationTests
