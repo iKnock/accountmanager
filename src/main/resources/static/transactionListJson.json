@@ -1,0 +1,34 @@
+{
+    "status": "OK",
+    "error": [],
+    "payload": {
+        "list": [{
+                "transactionId": "1243550763002",
+                "operationId": "18000094172984",
+                "accountingDate": "2018-07-27",
+                "valueDate": "2018-07-27",
+                "type": {
+                    "enumeration": "GBS_TRANSACTION_TYPE",
+                    "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0034"
+                },
+                "amount": -0.01,
+                "currency": "EUR",
+                "description": "GC TERRIBILE LUCA        DATA ORDINE 27072018  TEST API"
+            },
+            {
+                "transactionId": "1243903255002",
+                "operationId": "18000094554934",
+                "accountingDate": "2018-07-27",
+                "valueDate": "2018-07-27",
+                "type": {
+                    "enumeration": "GBS_TRANSACTION_TYPE",
+                    "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0034"
+                },
+                "amount": -0.01,
+                "currency": "EUR",
+                "description": "GC TERRIBILE LUCA        DATA ORDINE 27072018  TEST API"
+            }]
+    }
+}
+
+
