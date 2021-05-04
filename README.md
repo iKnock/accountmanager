@@ -21,8 +21,7 @@ Accountmanager api is an wrapper which perform three main operations based on th
 
 ## Architecture
 
-![Project Image]
-(https://github.com/iKnock/accountmanager/blob/main/arch-dig.png)
+![Project Image](https://github.com/iKnock/accountmanager/blob/main/arch-dig.png)
 
 ---
 
