@@ -1,11 +1,5 @@
 # Accountmanager API
 
-
-
-> This is a ReadMe template to help save you time and effort.
-
----
-
 ## Description
 
 Accountmanager api is an wrapper which perform three main operations based on the Fabrick API on the cash account of user. The Operations are Get Balance of an account, List of transactions and Transfer.
