@@ -23,16 +23,17 @@ Accountmanager api is an API which perform three main operations based on the Fa
 
 ## How To Use
 
-#### Installation
+### Installation
 
 - Install and Start MongoDb
 - Install and Start Redis
 - Install Maven
 - Build and run account manager
 
-#### API Reference
-
-## Section One
+### API Reference
+---
+#### Section One
+---
 One of the services of the Account Manager API is to setup the API for further usage. Using this Section one can add API information (operations), Update existing API information, Search existing API Information and remove API Information In order to use the API correctly, its necessary to add the three API information into the configuration of the AccountManager API. Using the below endpoint information and the subsequent json body, its possible to configure the three operations to use throught the Account Manager API.
 
 1. Add API Information/Configuration
@@ -130,7 +131,9 @@ Request Body:
 }
 ```
 
-## Section Two
+---
+#### Section Two
+---
 
 1. Read Balance
 
