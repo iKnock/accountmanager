@@ -17,15 +17,12 @@ Accountmanager api is an wrapper which perform three main operations based on th
 - Mongo DB
 - Maven
 
-[Back To The Top](#read-me-template)
-
 ---
 
 ## Architecture
 
-![Project Image](project-image-url)
-
-[Back To The Top](#read-me-template)
+![Project Image]
+(https://github.com/iKnock/accountmanager/blob/main/arch-dig.png)
 
 ---
 
@@ -40,7 +37,8 @@ Accountmanager api is an wrapper which perform three main operations based on th
 
 #### API Reference
 
-In order to use the API correctly, its necessary to add the three API information into the configuration of the AccountManager API.
+## Section One
+One of the services of the Account Manager API is to setup the API for further usage. Using this Section one can add API information (operations), Update existing API information, Search existing API Information and remove API Information In order to use the API correctly, its necessary to add the three API information into the configuration of the AccountManager API. Using the below endpoint information and the subsequent json body, its possible to configure the three operations to use throught the Account Manager API.
 
 1. Add API Information/Configuration
 
@@ -65,12 +63,12 @@ Request Body:
     "httpHeader": [
         {
             "headerName": "Auth-Schema",
-            "headerValue": "S2S",
+            "headerValue": "Put auth schema here",
             "mandatory": true
         },
         {
             "headerName": "Api-Key",
-            "headerValue": "FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP",
+            "headerValue": "Put api key here",
             "mandatory": true
         }
     ]
@@ -93,12 +91,12 @@ Request Body:
     "httpHeader": [
         {
             "headerName": "Auth-Schema",
-            "headerValue": "S2S",
+            "headerValue": "Put auth schema here",
             "isHeaderMandatory": true
         },
         {
             "headerName": "Api-Key",
-            "headerValue": "FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP",
+            "headerValue": "Put api key here",
             "isHeaderMandatory": true
         }
     ]
@@ -120,12 +118,12 @@ Request Body:
    "httpHeader":[
       {
          "headerName":"Auth-Schema",
-         "headerValue":"S2S",
+         "headerValue":"Put auth schema here",
          "mandatory":true
       },
       {
          "headerName":"Api-Key",
-         "headerValue":"FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP",
+         "headerValue":"Put api key here",
          "mandatory":true
       },
       {
@@ -136,7 +134,10 @@ Request Body:
    ]
 }
 ```
-2. Read Balance
+
+## Section Two
+
+1. Read Balance
 
 >GET: /api/fabrick/account/v1.0/balance/{accountId}?operationName=account-balance
 
@@ -146,7 +147,7 @@ Request:
     URI Variables: operationName=account-balance
 ```
 
-3. List Transaction
+2. List Transaction
 
 >GET: api/fabrick/account/v1.0/transaction/{accountId}?operationName=list-transactions&fromAccountingDate=2019-01-01&toAccountingDate=2019-04-01
 
@@ -157,11 +158,13 @@ Request:
     toAccountingDate=2019-12-11
 ```
 
-4. Transfer
+3. Transfer
 
->GET: /api/fabrick/account/v1.0/transfer/{accountId}?operationName=transfer
+>POST: /api/fabrick/account/v1.0/transfer/{accountId}?operationName=transfer
 ```html
 Request: 
     URI Param: accountId
     URI Variables: operationName=transfer
+    Request Body:
+    
 ```
