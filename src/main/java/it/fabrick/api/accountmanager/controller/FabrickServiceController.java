@@ -1,4 +1,4 @@
-package it.fabrick.api.accountmanager.Controllers;
+package it.fabrick.api.accountmanager.controller;
 
 import it.fabrick.api.accountmanager.exceptions.AccountManagerException;
 import it.fabrick.api.accountmanager.input.MoneyTransfer;
