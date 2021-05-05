@@ -22,7 +22,7 @@ import lombok.Setter;
 public class MoneyTransfer implements Serializable {
 
     private String accountId;
-    public Creditor creditor;
+    private Creditor creditor;
 
     private String executionDate;//optional    
     private String description;

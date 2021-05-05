@@ -36,11 +36,11 @@ public class ServiceErrorHandler implements ResponseErrorHandler {
             String errorResponse = new BufferedReader(new InputStreamReader(httpResponse.getBody())).lines().parallel().collect(Collectors.joining("\n"));
 
             LOGGER.info("Server Error Message ---> " + errorResponse);
-            
+
             Map<String, String> errorResponseMap = new ObjectMapper().readValue(errorResponse, Map.class);
             throw new AccountManagerException(httpResponse.getStatusCode(), errorResponseMap.get("status"), errorResponseMap.get("errors"), errorResponseMap.get("payload"));
         } else if (httpResponse.getStatusCode().series() == HttpStatus.Series.CLIENT_ERROR) {
-            LOGGER.info("Client Error Called ");
+            LOGGER.info("Client Error Called " + httpResponse.getBody());
 
             String errorResponse = new BufferedReader(new InputStreamReader(httpResponse.getBody())).lines().parallel().collect(Collectors.joining("\n"));
 

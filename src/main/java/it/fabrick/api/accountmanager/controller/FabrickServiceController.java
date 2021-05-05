@@ -42,15 +42,22 @@ public class FabrickServiceController {
             @RequestHeader(value = "User-Agent") String userAgent,
             HttpServletRequest request) {
 
-        LOGGER.info("<AccountServiceController> - getAccountBalance");
+        LOGGER.info("<FabrickServiceController> - getAccountBalance");
         ResponseEntity<AccountManagerResponse> accountBalance;
         try {
             accountBalance = accountService.featchAccountBalance(accountId, operationName);
             apiLoggerService.logApiRequest(request, operationName, "OK", userAgent, accountId);
             return accountBalance;
         } catch (AccountManagerException ex) {
-            LOGGER.error("Exception: " + ex);
-            apiLoggerService.logApiRequest(request, operationName, "KO", userAgent, accountId);
+            LOGGER.error("FabrickServiceController.AccountManagerException ---> : " + ex.getErrors());
+
+            try {
+                apiLoggerService.logApiRequest(request, operationName, "KO", userAgent, accountId);
+            } catch (AccountManagerException e) {
+                LOGGER.info("<DBDownException -----> " + e.getErrors().toString());
+                AccountManagerException exception = new AccountManagerException(e.getHttpStatus(), e.getStatus(), e.getErrors(), e.getPayload());
+                return ResponseEntity.status(exception.getHttpStatus()).body(new AccountManagerResponse(exception.getStatus(), exception.getErrors(), exception.getPayload()));
+            }
             return ResponseEntity.status(ex.getHttpStatus()).body(new AccountManagerResponse(ex.getStatus(), ex.getErrors(), ex.getPayload()));
         }
     }
@@ -64,18 +71,23 @@ public class FabrickServiceController {
             @RequestHeader(value = "User-Agent") String userAgent,
             HttpServletRequest request) {
 
-        LOGGER.info("<AccountServiceController> - getTransactionList");
+        LOGGER.info("<FabrickServiceController> - getTransactionList");
         ResponseEntity<AccountManagerResponse> transactionList;
         try {
             transactionList = accountService.featchTransactionList(accountId, operationName, fromAccountingDate, toAccountingDate);
             apiLoggerService.logApiRequest(request, operationName, "OK", userAgent, accountId);
-            LOGGER.info("<AccountServiceController> - the payload= " + transactionList.getBody());
+            LOGGER.info("<FabrickServiceController> - the payload= " + transactionList.getBody());
             return transactionList;
         } catch (AccountManagerException ex) {
-            LOGGER.error("Exception: " + ex);
-            apiLoggerService.logApiRequest(request, operationName, "KO", userAgent, accountId);
-            return ResponseEntity.status(ex.getHttpStatus()).body(new AccountManagerResponse(ex.getStatus(), ex.getErrors(), ex.getPayload())
-            );
+            LOGGER.error("Exception: " + ex.getMessage());
+            try {
+                apiLoggerService.logApiRequest(request, operationName, "KO", userAgent, accountId);
+            } catch (AccountManagerException e) {
+                LOGGER.info("<DBDownException -----> " + e.getErrors().toString());
+                AccountManagerException exception = new AccountManagerException(e.getHttpStatus(), e.getStatus(), e.getErrors(), e.getPayload());
+                return ResponseEntity.status(exception.getHttpStatus()).body(new AccountManagerResponse(exception.getStatus(), exception.getErrors(), exception.getPayload()));
+            }
+            return ResponseEntity.status(ex.getHttpStatus()).body(new AccountManagerResponse(ex.getStatus(), ex.getErrors(), ex.getPayload()));
         }
     }
 
@@ -87,15 +99,21 @@ public class FabrickServiceController {
             @RequestHeader(value = "User-Agent") String userAgent,
             HttpServletRequest request) {
 
-        LOGGER.info("<AccountServiceController> - performMoneyTransfer");
+        LOGGER.info("<FabrickServiceController> - performMoneyTransfer");
         ResponseEntity<AccountManagerResponse> accountBalance;
         try {
             accountBalance = accountService.handleMoneyTransfer(accountId, operationName, moneyTransfer);
             apiLoggerService.logMoneyTransferRequest(request, operationName, "OK", userAgent, moneyTransfer, accountId);
             return accountBalance;
         } catch (AccountManagerException ex) {
-            LOGGER.error("Exception: " + ex);
-            apiLoggerService.logMoneyTransferRequest(request, operationName, "KO", userAgent, moneyTransfer, accountId);
+            LOGGER.error("Exception: " + ex.getMessage());
+            try {
+                apiLoggerService.logMoneyTransferRequest(request, operationName, "KO", userAgent, moneyTransfer, accountId);
+            } catch (AccountManagerException e) {
+                LOGGER.info("<DBDownException -----> " + e.getErrors().toString());
+                AccountManagerException exception = new AccountManagerException(e.getHttpStatus(), e.getStatus(), e.getErrors(), e.getPayload());
+                return ResponseEntity.status(exception.getHttpStatus()).body(new AccountManagerResponse(exception.getStatus(), exception.getErrors(), exception.getPayload()));
+            }
             return ResponseEntity.status(ex.getHttpStatus()).body(new AccountManagerResponse(ex.getStatus(), ex.getErrors(), ex.getPayload()));
         }
     }
