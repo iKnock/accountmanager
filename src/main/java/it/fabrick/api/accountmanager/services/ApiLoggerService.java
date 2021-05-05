@@ -60,7 +60,6 @@ public class ApiLoggerService {
         apiLogger.setStatus(status);
         apiLogger.setMoneyTransferInput(transfer);
         try {
-
             apiLogger.setIp(InetAddress.getLocalHost().getHostAddress());//confirm the ip is correct 
             apiLogger.setHost(InetAddress.getLocalHost().getHostName());//confirm the ip is correct 
         } catch (UnknownHostException ex) {

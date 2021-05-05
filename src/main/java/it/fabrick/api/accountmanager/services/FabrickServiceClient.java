@@ -6,7 +6,6 @@ import it.fabrick.api.accountmanager.models.input.ApiInformation;
 import it.fabrick.api.accountmanager.models.input.CustomeHttpHeader;
 import it.fabrick.api.accountmanager.input.MoneyTransfer;
 import it.fabrick.api.accountmanager.models.response.AccountManagerResponse;
-import it.fabrick.api.accountmanager.util.JsonProcessor;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashMap;
